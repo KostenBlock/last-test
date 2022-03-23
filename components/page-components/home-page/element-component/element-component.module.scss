@@ -1,0 +1,20 @@
+.todo__element {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  gap: 30px;
+
+  .title {
+    font-size: 24px;
+    line-height: 30px;
+  };
+
+  .progress {
+    font-size: 16px;
+    line-height: 24px;
+  };
+};

@@ -1,0 +1,65 @@
+
+
+.button__default {
+  outline: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #ddd;
+  width: 256px;
+  height: 48px;
+  transition: all 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(74, 67, 67, 0.3);
+  }
+
+  &:focus {
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    transform: none;
+    box-shadow: none;
+    cursor: no-drop !important;
+  }
+}
+
+.danger {
+  background-color: #FF0000;
+  border-color: #FF0000;
+};
+
+.success  {
+  background-color: green;
+  border-color: green;
+};
+
+.warning {
+  color: #333;
+  background-color: yellow;
+  border-color: yellow;
+};
+
+.min {
+  transform: scale(0.5);
+};
+
+.large {
+  transform: scale(1.5);
+};
+
+.hidden:first-child {
+  color: transparent;
+};
+
+.outline {
+  background: transparent !important;
+};
+
+.button__active {
+  width: 100%;
+};
