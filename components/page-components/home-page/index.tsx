@@ -17,7 +17,7 @@ import ChangeComponent from "~/components/page-components/home-page/change-compo
 
 export default function HomePage() {
     const dispatch = useDispatch<Function>();
-    const { elements, isPending, idToDeleted, activeIndex } = useSelector(selectElementsState);
+    const { elements, isPending, idToDelete, activeIndex } = useSelector(selectElementsState);
     const [isChanged, setIsChanged] = useState<boolean>(false);
     const [isDeleted, setIsDeleted] = useState<boolean>(false);
     const [backUpElement, setBackUpElement] = useState<Object>();
@@ -58,7 +58,7 @@ export default function HomePage() {
                                 title={title}
                                 completed={completed}
                                 preDeleteEvent={() => {
-                                    dispatch(setState({idToDeleted: id}));
+                                    dispatch(setState({idToDelete: id}));
                                     setIsDeleted(true);
                                 }}
                                 changeEvent={() => {
@@ -73,10 +73,14 @@ export default function HomePage() {
             </div>
             {isDeleted
                 ? <SecureComponent
-                    closeEvent={() => setIsDeleted(false)}
-                    deleteEvent={() => {
-                        dispatch(deleteElement(idToDeleted));
+                    closeEvent={() => {
                         setIsDeleted(false);
+                        dispatch(setState({ idToDelete: null }));
+                    }}
+                    deleteEvent={() => {
+                        setIsDeleted(false);
+                        dispatch(deleteElement(idToDelete));
+                        dispatch(setState({ idToDelete: null }));
                     }}
                 />
                 : null}
@@ -86,11 +90,12 @@ export default function HomePage() {
                     changeEvent={(value: string | boolean, filed: string) => dispatch(setElement({ content: {[filed]: value }}))}
                     saveEvent={() => {
                         setIsChanged(false);
-                        dispatch(setState({ activeIndex: null }))
+                        dispatch(setState({ activeIndex: null }));
                     }}
                     closeEvent={() => {
                         setIsChanged(false);
                         dispatch(rollBackElement({ element: backUpElement }));
+                        dispatch(setState({ activeIndex: null }));
                     }}
                 />
                 : null}

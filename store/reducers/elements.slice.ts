@@ -9,7 +9,7 @@ interface Elements {
         completed: boolean;
     }[];
     activeIndex: number | null;
-    idToDeleted: number | null;
+    idToDelete: number | null;
     isPending: boolean;
     isError?: boolean;
 }
@@ -17,7 +17,7 @@ interface Elements {
 const initialState: Elements = {
     elements: [],
     activeIndex: null,
-    idToDeleted: null,
+    idToDelete: null,
     isPending: true,
     isError: false
 };
